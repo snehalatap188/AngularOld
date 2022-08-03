@@ -3,7 +3,7 @@
 
 name: Build and deploy ASP.Net Core app to Azure Web App - GithubBackendApp
 env :
- DOTNET_ROOT : 'WebApplication1'
+ DOTNET_ROOT : '**/WebApplication1'
 on:
   push:
      branches:
@@ -11,20 +11,20 @@ on:
      paths:
       -'WebApplication1'
   workflow_dispatch:
-
+  
 jobs:
   build:
     runs-on: windows-latest
-
+    
     steps:
       - uses: actions/checkout@v2
-
+       
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'
           include-prerelease: true
-
+         
       - name: Build with dotnet
         run: dotnet build --configuration Release WebApplication1/WebApplication1.csproj
 
