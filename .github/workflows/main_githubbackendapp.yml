@@ -27,13 +27,13 @@ jobs:
         run: dotnet build --configuration Release WebApplication1/WebApplication1.csproj
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ./build_output Angular/WebApplication1/WebApplication1.csproj
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/Angular/WebApplication1
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: Angular/WebApplication1/WebApplication1.csproj
+          path: ${{env.DOTNET_ROOT}}/Angular/WebApplication1
   deploy:
     runs-on: windows-latest
     needs: build
