@@ -3,7 +3,7 @@
 
 name: Build and deploy ASP.Net Core app to Azure Web App - GithubBackendApp
 env :
- DOTNET_ROOT : 'Angular/WebApplication1'
+ DOTNET_ROOT : 'WebApplication1'
 on:
   push:
      branches:
@@ -29,7 +29,7 @@ jobs:
         run: dotnet build --configuration Release WebApplication1/WebApplication1.csproj
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/Angular/WebApplication1
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/WebApplication1
         #run: dotnet publish -c Release -o ./build_output WebApplication1/WebApplication1.csproj
         
 
@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/Angular/WebApplication1
+          path: ${{env.DOTNET_ROOT}}/WebApplication1
           #path: ./build_output WebApplication1/WebApplication1.csproj
   deploy:
     runs-on: windows-latest
