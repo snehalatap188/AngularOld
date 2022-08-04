@@ -2,8 +2,11 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy ASP.Net Core app to Azure Web App - GithubBackendApp
-env :
- DOTNET_ROOT : 'AngularOld/AngularOld'
+env:
+  AZURE_WEBAPP_NAME: GithubBackendApp # set this to the name of your Azure Web App
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '6'                 # set this to the .NET Core version to use
+  DOTNET_ROOT: 'AngularOld/WebApplication'
 on:
   push:
      branches:
