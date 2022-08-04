@@ -30,14 +30,14 @@ jobs:
           npm run publish
           
       - name: Move the committed index.js file
-        run: mv ./angularproject2/web.config dist
+        run: mv ./angularproject2/web.config dist/angularproject2
          
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
           name: dist-without-markdown
           path: |
-            dist
+            dist/angularproject2
             !dist/**/*.md
       
 
