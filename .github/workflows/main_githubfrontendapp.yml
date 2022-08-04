@@ -7,8 +7,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      -angularproject2
   workflow_dispatch:
 
 jobs:
@@ -17,19 +15,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-         path: Angular/angularproject2
-
+        
       - name: Set up Node.js version
         uses: actions/setup-node@v1
         with:
           node-version: '16.x'
+          working-directory: ./angularproject2
 
       - name: npm install, build, and test
+        working-directory: ./angularproject2
         run: |
           npm install
           npm run build --if-present
-          npm run test --if-present
+         
       
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2

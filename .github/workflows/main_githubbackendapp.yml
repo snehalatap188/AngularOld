@@ -2,14 +2,15 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy ASP.Net Core app to Azure Web App - GithubBackendApp
-env :
- DOTNET_ROOT : '.'
+env:
+  AZURE_WEBAPP_NAME: GithubBackendApp # set this to the name of your Azure Web App
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  DOTNET_VERSION: '6'                 # set this to the .NET Core version to use
+  DOTNET_ROOT: './WebApplication'
 on:
   push:
      branches:
       - main
-     paths:
-      -'WebApplication1'
   workflow_dispatch:
   
 jobs:
@@ -26,9 +27,11 @@ jobs:
           include-prerelease: true
          
       - name: Build with dotnet
+        working-directory: ./WebApplication1
         run: dotnet build --configuration Release 
 
       - name: dotnet publish
+        working-directory: ./WebApplication1
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/WebApplication1
         #run: dotnet publish -c Release -o ./build_output WebApplication1/WebApplication1.csproj
         
