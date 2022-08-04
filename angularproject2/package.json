@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prestart": "node aspnetcore-https",
-    "publish": "gulp build && ng build --configuration production"
+    "publish": "ng build --configuration production"
   },
   "private": true,
   "dependencies": {
