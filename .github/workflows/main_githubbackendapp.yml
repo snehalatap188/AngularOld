@@ -3,7 +3,7 @@
 
 name: Build and deploy ASP.Net Core app to Azure Web App - GithubBackendApp
 env :
- DOTNET_ROOT : 'AngularOld/WebApplication1'
+ DOTNET_ROOT : 'AngularOld/AngularOld'
 on:
   push:
      branches:
